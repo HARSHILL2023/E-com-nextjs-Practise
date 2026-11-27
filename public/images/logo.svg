@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title id="title">Marketly store logo</title>
+  <rect width="120" height="120" rx="24" fill="#0369A1"/>
+  <path d="M28 38h64l-8 44H36l-8-44Z" fill="#FFFFFF"/>
+  <path d="M44 38a16 16 0 0 1 32 0" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="48" cy="86" r="5" fill="#0369A1"/>
+  <circle cx="72" cy="86" r="5" fill="#0369A1"/>
+</svg>
