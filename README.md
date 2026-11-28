@@ -6,15 +6,16 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
 yarn dev
-# or
 pnpm dev
-# or
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Admin product management
+
+Set `ADMIN_ACTION_TOKEN` in `.env.local` to a private value, then open `/admin` and enter that value. The token is stored in an HTTP-only cookie. Product changes use a server-side in-memory store, so they reset when the server restarts.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
