@@ -1,0 +1,38 @@
+
+[
+  {
+    "id": 1,
+    "name": "iPhone 16",
+    "price": 79999,
+    "category": "electronics",
+    "description": "Apple smartphone"
+  },
+  {
+    "id": 2,
+    "name": "Samsung Galaxy S25",
+    "price": 74999,
+    "category": "electronics",
+    "description": "Samsung smartphone"
+  },
+  {
+    "id": 3,
+    "name": "Nike Air Max",
+    "price": 5999,
+    "category": "fashion",
+    "description": "Running shoes"
+  },
+  {
+    "id": 4,
+    "name": "Levi's Jeans",
+    "price": 2999,
+    "category": "fashion",
+    "description": "Casual denim jeans"
+  },
+  {
+    "id": 5,
+    "name": "The Alchemist",
+    "price": 399,
+    "category": "books",
+    "description": "A fiction book"
+  }
+]

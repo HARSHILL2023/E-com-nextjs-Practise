@@ -22,7 +22,6 @@ export default function Navbar() {
                 <Link href="/products" className={crrpath=="/products"?activeClass:inactiveClass}>Products</Link>
                 <Link href="/categories" className={crrpath=="/categories"?activeClass:inactiveClass}>Categories</Link>
                 <Link href="/contact" className={crrpath=="/contact"?activeClass:inactiveClass}>Contact</Link>
-                <Link href="/admin" className={crrpath==="/admin"?activeClass:inactiveClass}>Admin</Link>
             </div>
         </nav>
     );

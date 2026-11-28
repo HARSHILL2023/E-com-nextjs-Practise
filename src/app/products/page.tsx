@@ -1,53 +1,88 @@
-import Link from "next/link";
-import Image from "next/image";
-import { getProducts } from "@/lib/products";
 
-export const revalidate = 60;
+import ProductVariant from "@/components/ProductVariant";
+import AddToCart from "@/components/Cart";
 
-export default function ProductsPage() {
-  const products = getProducts();
+type Props = {
+  searchParams: Promise<{
+    search?: string;
+    page?: string;
+    sort?: string;
+  }>;
+};
+
+const product = {
+  id: "product-101",
+  name: "Premium Smartphone",
+  price: 24999,
+  originalPrice: 29999,
+  category: "Electronics",
+  description:
+    "Experience powerful performance, stunning display, and a sleek design with our premium smartphone.",
+  variants: ["Small", "Medium", "Large", "XL"],
+  stock: "In Stock",
+};
+
+export default async function ProductsPage({ searchParams }: Props) {
+  const params = await searchParams;
+
+  const search = params.search || "";
+  const page = params.page || "1";
+  const sort = params.sort || "default";
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Our Products</h1>
-        <p className="mt-2 text-gray-600">Browse our product collection.</p>
-      </div>
+    <main className="min-h-screen bg-gray-50 px-6 py-10">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="mb-8 text-3xl font-bold">Products Page</h1>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => (
-          <Link
-            key={product.id}
-            href={`/products/${product.id}`}
-            className="overflow-hidden rounded-lg border transition hover:shadow-md"
-          >
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={900}
-              height={600}
-              unoptimized
-              className="h-56 w-full object-cover"
-            />
-            <div className="p-4">
-              <p className="text-sm text-blue-700">{product.category}</p>
-              <h2 className="mt-1 text-xl font-semibold">{product.name}</h2>
-              <p className="mt-2 font-bold">
+        <div className="grid gap-10 rounded-xl bg-white p-8 shadow-sm md:grid-cols-2">
+          <div className="flex min-h-80 items-center justify-center rounded-xl bg-gray-100">
+            <h2 className="text-2xl font-semibold text-gray-400">
+              Product Image
+            </h2>
+          </div>
+
+          <div>
+            <p className="text-sm text-blue-600">{product.category}</p>
+
+            <h1 className="mt-2 text-3xl font-bold text-gray-900">
+              {product.name}
+            </h1>
+
+            <p className="mt-4 text-gray-600">
+              {product.description}
+            </p>
+
+            <div className="mt-5 flex items-center gap-3">
+              <span className="text-2xl font-bold">
                 ₹{product.price.toLocaleString("en-IN")}
-              </p>
-              <p className="mt-1 text-sm text-gray-600">
-                {product.stock > 0 ? `${product.stock} in stock` : "Out of stock"}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
+              </span>
 
-      {products.length === 0 && (
-        <p className="rounded-lg border p-5 text-gray-600">
-          There are no products available right now.
-        </p>
-      )}
+              <span className="text-lg text-gray-400 line-through">
+                ₹{product.originalPrice.toLocaleString("en-IN")}
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm font-medium text-green-600">
+              {product.stock}
+            </p>
+
+            <ProductVariant variants={product.variants} />
+
+            <AddToCart
+              productId={product.id}
+              productName={product.name}
+              price={product.price}
+            />
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-lg border bg-white p-5">
+          <h2 className="mb-3 text-xl font-semibold">Search Parameters</h2>
+          <p>Search: {search || "No search"}</p>
+          <p>Page: {page}</p>
+          <p>Sort: {sort}</p>
+        </div>
+      </div>
     </main>
   );
 }

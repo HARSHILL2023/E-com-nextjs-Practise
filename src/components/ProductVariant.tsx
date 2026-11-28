@@ -9,6 +9,8 @@ type Props = {
 export default function Size({ variants }: Props) {
   const [select, setSelect] = useState("Medium");
 
+  const sizes = ["Small", "Medium", "Large", "XL"];
+
   return (
     <div className="mt-3">
       <div className="flex items-center justify-between mb-3">
@@ -18,7 +20,7 @@ export default function Size({ variants }: Props) {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        {variants.map((size) => (
+        {sizes.map((size) => (
           <button
             key={size}
             type="button"
